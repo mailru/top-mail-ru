@@ -14,7 +14,6 @@ class TopMailRu(object):
 
   def request(self, path, args):
     url = 'http://top.mail.ru' + path + '?' + urllib.urlencode(args)
-#    print url
     try:
       resp = urllib2.urlopen(url)
       jr = json.loads(resp.read())
@@ -26,7 +25,6 @@ class TopMailRu(object):
         print 'The server couldn\'t fulfill the request.'
         print 'Error code: ', e.code
     else:
-#      print jr
       return jr
 
   def registerSite(self, args):
@@ -66,3 +64,4 @@ class TopMailRu(object):
     if res.get('session'):
       self.session = res['session']
     return res.get('logged') == 'yes'
+
