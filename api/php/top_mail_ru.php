@@ -9,7 +9,7 @@ class TopMailRu
 
     private $apiKey;
     private $returnAsArray;
-  private $session;
+    private $session;
 
     /**
      * TopMailRu constructor.
@@ -30,11 +30,11 @@ class TopMailRu
     protected function bitxor($o1, $o2)
     {
         $result = '';
-    $runs = strlen($o1);
+        $runs = strlen($o1);
         for ($i = 0; $i < $runs; $i++)
             $result .= $o1[$i] ^ $o2[$i];
         return $result;
-  }
+    }
 
     /**
      * @param $path
@@ -45,19 +45,19 @@ class TopMailRu
     protected function request($path, $argsArray, $returnAsArray)
     {
         $url = static::BASE_URL . $path . '?' . http_build_query($argsArray);
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $data = null;
-    try {
-      $data = curl_exec($ch);
-      curl_close($ch);
+        try {
+            $data = curl_exec($ch);
+            curl_close($ch);
             $data = json_decode($data, $returnAsArray);
         } catch (Exception $e) {
             echo "Exception: {$e->getCode()} ({$e->getMessage()})", PHP_EOL;
+        }
+        return $data;
     }
-    return $data;
-  }
 
     /**
      * @return array
@@ -93,10 +93,10 @@ class TopMailRu
     public function editSite($id, $password, $args)
     {
         $args += $this->getKeyAndSession();
-    $args['id'] = $id;
-    $args['password'] = $password;
+        $args['id'] = $id;
+        $args['password'] = $password;
         return $this->request('/json/edit', $args, $this->returnAsArray);
-  }
+    }
 
     /**
      * @param $id
@@ -107,10 +107,10 @@ class TopMailRu
     public function getCode($id, $password, $args)
     {
         $args += $this->getKeyAndSession();
-    $args['id'] = $id;
-    $args['password'] = $password;
+        $args['id'] = $id;
+        $args['password'] = $password;
         return $this->request('/json/code', $args, $this->returnAsArray);
-  }
+    }
 
     /**
      * @param $session
@@ -118,7 +118,7 @@ class TopMailRu
     public function setSession($session)
     {
         $this->session = $session;
-  }
+    }
 
     /**
      * @param $id
@@ -131,10 +131,10 @@ class TopMailRu
             array('id' => $id, 'password' => $password, 'action' => 'json'),
             $this->getKeyAndSession()
         );
-    $res = $this->request('/json/login', $args, true);
+        $res = $this->request('/json/login', $args, true);
         if ($res['session']) {
             $this->session = $res['session'];
-  }
+        }
         return isset($res['logged']) && $res['logged'] === 'yes';
     }
 
@@ -148,9 +148,9 @@ class TopMailRu
     public function getStat($id, $password, $type, $args)
     {
         $args += $this->getKeyAndSession();
-    $args['id'] = $id;
-    $args['password'] = $password;
+        $args['id'] = $id;
+        $args['password'] = $password;
         return $this->request('/json/' . $type, $args, $this->returnAsArray);
-  }
+    }
 
 }

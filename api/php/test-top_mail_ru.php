@@ -56,8 +56,8 @@ if (!$tmr->login($counterId, $PASSWORD)) {
 // 2-й аргумент - пароль, если вы ранее и успешно вызвали login/loginByHash, то аргумент можно оставить пустым
 // 3-й аргумент - опции (см. https://help.mail.ru/top/API/main Код счетчика)
 $result = $tmr->getCode($counterId, $PASSWORD, array(
-	'mode' => 'nologo',
-	'pagetype' => 'xhtml'
+    'mode' => 'nologo',
+    'pagetype' => 'xhtml'
 ));
 if (array_key_exists('error', $result)) {
     echo 'getCode() error';
@@ -76,7 +76,7 @@ print_r($result);
 // Более детально см. параметры запросов (https://help.mail.ru/top/API/params) и
 // описания JSON ответов (https://help.mail.ru/top/API/response)
 $tmr->getStat($counterId, $PASSWORD, 'visits', array(
-	'period' => 1,
+    'period' => 1,
 ));
 if (array_key_exists('error', $result)) {
     echo 'getStat(), error';
