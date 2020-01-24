@@ -16,8 +16,8 @@
 
 * [Получить API key](https://top.mail.ru/feedback)
 
-* [Регистрация сайта и управление](https://help.mail.ru/top/API/main)
+* [Регистрация сайта и управление](https://top.mail.ru/help/ru/api/main)
 
-* [Основные параметры](https://help.mail.ru/top/API/params)
+* [Основные параметры](https://top.mail.ru/help/ru/api/params)
 
-* [Описание JSON ответов](https://help.mail.ru/top/API/response)
+* [Описание JSON ответов](https://top.mail.ru/help/ru/api/response)
