@@ -5,7 +5,7 @@
  */
 class TopMailRu
 {
-    const BASE_URL = 'http://top.mail.ru';
+    const BASE_URL = 'https://top.mail.ru';
 
     private $apiKey;
     private $returnAsArray;
