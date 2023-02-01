@@ -9,7 +9,7 @@ class TopMailRu(object):
   apikey = ""
   session = ""
 
-  def __init__(self, apikey):
+  def __init__(self, apikey=''):
     self.apikey = apikey	
 
   def request(self, path, args):
