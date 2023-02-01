@@ -13,7 +13,7 @@ class TopMailRu(object):
     self.apikey = apikey	
 
   def request(self, path, args):
-    url = 'http://top.mail.ru' + path + '?' + urllib.urlencode(args)
+    url = 'https://top.mail.ru' + path + '?' + urllib.urlencode(args)
     try:
       resp = urllib2.urlopen(url)
       jr = json.loads(resp.read())
