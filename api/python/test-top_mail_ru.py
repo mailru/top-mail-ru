@@ -20,7 +20,7 @@ API_KEY='__API__KEY__'
 tmr = TopMailRu(API_KEY)
 
 # registerSite() - Регистрация сайта
-# см. https://help.mail.ru/top/API/main - Регистрация сайта и управление
+# см. https://top.mail.ru/help/ru/api/main - Регистрация сайта и управление
 result = tmr.registerSite({
         'title' : 'my site', # название нового счетчика
         'url' : MY_SITE, # url ресурса где счетчик будет размешен
@@ -34,7 +34,7 @@ result = tmr.registerSite({
         # Для участия в рейтинге выберите наиболее подходящую для Вашего ресурса категорию Рейтинга@Mail.ru.
         # Правильный выбор категории обеспечит Вам наибольший приток целевой аудитории со страниц Рейтинга@Mail.ru.
         # А также поможет сравнить популярность своего ресурса с популярностью ресурсов конкурентов.
-        # см. https://help.mail.ru/top/API/response - Информация о категориях рейтинга
+        # см. https://top.mail.ru/help/ru/api/response - Информация о категориях рейтинга
         'category' : 0
         })
 if 'error' in result:
@@ -55,7 +55,7 @@ if not result:
 # getCode() - получить код счетчика
 # 1-й аргумент id счетчика
 # 2-й аргумент - пароль, если вы ранее и успешно вызвали login, то аргумент можно оставить пустым
-# 3-й аргумент - опции (см. https://help.mail.ru/top/API/main Код счетчика)
+# 3-й аргумент - опции (см. https://top.mail.ru/help/ru/api/main -- Код счетчика)
 result = tmr.getCode(counter_id, '', { 'mode' : 'nologo', 'pagetype' : 'xhtml' })
 if 'error' in result:
     print('getCode() error')
@@ -68,10 +68,10 @@ pprint(result)
 # getStat() - получить данные отчета
 # 1-й аргумент - id счетчика
 # 2-й аргумент - пароль, если вы ранее и успешно вызвали login, то аргумент можно оставить пустым
-# 3-й аргумент - тип отчета (см. https://help.mail.ru/top/API/response)
+# 3-й аргумент - тип отчета (см. https://top.mail.ru/help/ru/api/response)
 # 4-й аргумент - аргументы конкретной статистики
-# Более детально см. параметры запросов (https://help.mail.ru/top/API/params) и
-# описания JSON ответов (https://help.mail.ru/top/API/response)
+# Более детально см. параметры запросов (https://top.mail.ru/help/ru/api/params) и
+# описания JSON ответов (https://top.mail.ru/help/ru/api/response)
 result = tmr.getStat(counter_id, PASSWORD, 'visits', { 'period' : 1 })
 if 'error' in result:
     print('getStat(), error')
@@ -79,5 +79,5 @@ if 'error' in result:
     sys.exit(1)
 
 print('Counter ' + counter_id + ', visits')
-# Результат зависит от типа отчета (см. https://help.mail.ru/top/API/response)
+# Результат зависит от типа отчета (см. https://top.mail.ru/help/ru/api/response)
 pprint(result)
